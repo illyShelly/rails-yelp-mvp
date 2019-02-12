@@ -1,0 +1,15 @@
+<h1>Edit <%= @restaurant.name %></h1>
+
+<%= render 'simple_form', restaurant: @restaurant %>
+
+<hr>
+
+<%= link_to restaurant_path(@restaurant) do %>
+  <i class="fa fa-history"></i> Back to <%= @restaurant.name %>
+<% end %>
+
+
+<!-- 1. i store in variable whole object (instance of restaurant) -->
+<!-- 2. !!! erb code for ruby!!! -->
+<!-- 3. get preffiled form :) -->
+<!-- 4. redirect in controller ! -->
