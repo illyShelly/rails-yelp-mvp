@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+  # column after 'only'
+
   def index
     @restaurants = Restaurant.all
   end
@@ -21,28 +24,35 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    # before_action
   end
 
   # find by id and just render prefilled form
   def edit
-    @restaurant = Restaurant.find(params[:id])
+    # before_action
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
+    # before_action
     # safe type of params
     @restaurant.update(restaurant_params)
     # after save redirect to check if ok
     redirect_to restaurant_path(@restaurant)
   end
   def destroy
-
+    # before_action
+    @restaurant.destroy
+    redirect_to restaurants_path # to all restaurants
   end
 
   private
 
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
+
    def restaurant_params
       params.require(:restaurant).permit(:name, :address, :phone_number, :category)
-    end
+  end
+
 end

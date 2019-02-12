@@ -1,7 +1,15 @@
 <h1>All restaurants</h1>
 <% @restaurants.each do |restaurant| %>
-  <li> <%= link_to restaurant.name, restaurant_path(restaurant) %></li>
-
+  <li> <%= link_to restaurant.name, restaurant_path(restaurant) %>
+  -->
+  <!-- added to delete restaurant -->
+  <%= link_to restaurant_path(restaurant),
+          method: :delete,
+          data: { confirm: "Delete #{restaurant.name}?" } do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+         <% end %>
+  </li>
 <% end %>
 <hr>
-<%=  link_to "Add Restaurant", new_restaurant_path %>
+<i class="fa fa-plus"></i> <%=  link_to "Add Restaurant", new_restaurant_path %>
+
