@@ -23,7 +23,7 @@ class RestaurantsController < ApplicationController
     # if not validate all -> do not redirect (let refilled fields)
     if @restaurant.save
       # redirect_to restaurant_path(@restaurant)
-      redirect_to restaurants_path
+      redirect_to restaurant_path(@restaurant)
     else
       render :new
     end
