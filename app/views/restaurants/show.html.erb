@@ -44,8 +44,8 @@
           <% end %>
       </div>
 
-      <%= link_to "Add Review", new_restaurant_review_path(@restaurant) %> |
-      <%= link_to "Edit restaurant", edit_restaurant_path %>
+      <%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary"%> |
+      <%= link_to "Edit restaurant", edit_restaurant_path, class: "btn btn-success" %>
       <hr>
       <%= link_to 'Back to restaurants', restaurants_path %>
     </div>
