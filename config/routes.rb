@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "restaurants#index"
 
   resources :restaurants do
+    member do                             # member => restaurant id in URL
+      get 'chef'                          # RestaurantsController#chef
+    end
     # inside create connections to restaurants/42/reviews
     resources :reviews, only: [ :new, :create ]
   end

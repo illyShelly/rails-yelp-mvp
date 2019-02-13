@@ -1,6 +1,13 @@
 class RestaurantsController < ApplicationController
-  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :find_restaurant, only: [:show, :edit, :update, :destroy, :chef]
   # column after 'only'
+
+  def chef
+    # before_action
+    @chef_name = @restaurant.chef
+    # add before action, params for id, update form and show restaurant, routes - member
+  end
+
   def index
     @restaurants = Restaurant.all
   end
@@ -55,7 +62,7 @@ class RestaurantsController < ApplicationController
   end
 
    def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :phone_number, :category)
+      params.require(:restaurant).permit(:name, :address, :phone_number, :category, :chef)
   end
 
 end
