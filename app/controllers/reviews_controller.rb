@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def new
     # we need @restaurant in our `simple_form_for`; refer to foreign key
     @restaurant = Restaurant.find(params[:restaurant_id])

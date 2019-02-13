@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
   # column after 'only'
-
   def index
     @restaurants = Restaurant.all
   end
