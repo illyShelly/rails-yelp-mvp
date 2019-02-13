@@ -34,10 +34,14 @@ class RestaurantsController < ApplicationController
 
   def update
     # before_action
-    # safe type of params
-    @restaurant.update(restaurant_params)
-    # after save redirect to check if ok
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.update(restaurant_params)
+      # safe type of params
+      @restaurant.update(restaurant_params)
+      # after save redirect to check if ok
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
   end
   def destroy
     # before_action

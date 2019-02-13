@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "restaurants#index"
-  resources :restaurants
+
+  resources :restaurants do
+    # inside create connections to restaurants/42/reviews
+    resources :reviews, only: [ :new, :create ]
+  end
+  # We don't need restaurant_id for the show, edit, update, destroy or a review!
+  # resources :reviews, only: [ :show, :edit, :update, :destroy ]
 end
 
-#  restaurants  GET     /restaurants           restaurants#index
-#                  POST    /restaurants           restaurants#create
-#  new_restaurant  GET     /restaurants/new       restaurants#new
-# edit_restaurant  GET     /restaurants/:id/edit  restaurants#edit
-#      restaurant  GET     /restaurants/:id       restaurants#show
-#                  PATCH   /restaurants/:id       restaurants#update
-#                  DELETE  /restaurants/:id       restaurants#destroy
+
+
+# new_restaurant_review  GET   /restaurants/:restaurant_id/reviews/new  reviews#new
+# restaurant_reviews  POST  /restaurants/:restaurant_id/reviews      reviews#create

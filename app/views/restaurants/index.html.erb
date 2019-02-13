@@ -1,15 +1,26 @@
-<h1>All restaurants</h1>
-<% @restaurants.each do |restaurant| %>
-  <li> <%= link_to restaurant.name, restaurant_path(restaurant) %>
-  -->
-  <!-- added to delete restaurant -->
-  <%= link_to restaurant_path(restaurant),
-          method: :delete,
-          data: { confirm: "Delete #{restaurant.name}?" } do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-         <% end %>
-  </li>
-<% end %>
-<hr>
-<i class="fa fa-plus"></i> <%=  link_to "Add Restaurant", new_restaurant_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>All restaurants</h1>
 
+      <% @restaurants.each do |restaurant| %>
+        <li class="list-group-item"> <%= link_to restaurant.name, restaurant_path(restaurant) %>
+          <!-- < restaurant.id %> -->
+        <strong>. . . . .</strong>
+        <!-- added to delete restaurant -->
+        <small>
+          <%= link_to restaurant_path(restaurant),
+            method: :delete,
+            data: { confirm: "Delete #{restaurant.name}?" } do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+           <% end %>
+        </small>
+        </li>
+      <% end %>
+
+      <hr>
+
+      <i class="fa fa-plus"></i> <%=  link_to "Add Restaurant", new_restaurant_path %>
+    </div>
+  </div>
+</div>
