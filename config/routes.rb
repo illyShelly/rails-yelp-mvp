@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   end
   # We don't need restaurant_id for the show, edit, update, destroy or a review!
   # resources :reviews, only: [ :show, :edit, :update, :destroy ]
+
+  # admin_restaurants  GET   /admin/restaurants  admin/restaurants#index
+  namespace :admin do
+    resources :restaurants, only: [:index]
+  end
 end
 
 
